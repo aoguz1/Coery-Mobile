@@ -72,10 +72,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Poppins
+    - family: Rubik
       fonts:
-        - asset: asset/fonts/Poppins-Regular.ttf
-        - asset: asset/fonts/Poppins-Bold.ttf
-        - asset: asset/fonts/Poppins-Light.ttf
+        - asset: asset/fonts/Rubik-Black.ttf
+        - asset: asset/fonts/Rubik-Bold.ttf
+        - asset: asset/fonts/Rubik-ExtraBold.ttf
+        - asset: asset/fonts/Rubik-Medium.ttf
+        - asset: asset/fonts/Rubik-Regular.ttf
+        - asset: asset/fonts/Rubik-SemiBold.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

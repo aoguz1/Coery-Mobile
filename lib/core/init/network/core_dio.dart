@@ -30,7 +30,8 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
       dynamic data,
       Map<String, dynamic> queryParameters,
       void Function(int, int) onReceiveProgress}) async {
-    final response = await request(path, data: data, options: Options(method: type.rawValue));
+    final response = await request(path,
+        data: data, options: Options(method: type.rawValue));
     switch (response.statusCode) {
       case HttpStatus.ok:
       case HttpStatus.accepted:

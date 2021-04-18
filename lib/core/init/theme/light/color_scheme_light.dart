@@ -16,6 +16,9 @@ class ColorSchemeLight {
   final Color lightGray = Color(0xfff7f7f7);
   final Color darkGray = Color(0xff676870);
   final Color black = Color(0xff020306);
+  final Color cornflower_blue = Color(0xff4FABF9);
+  final Color main_purple = Color(0xFF4649A0);
+  final Color electric_violet = Color(0xFF5236FF);
 
   final Color azure = Color(0xff27928d);
 }

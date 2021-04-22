@@ -58,14 +58,17 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   TextTheme textTheme() {
     return ThemeData.light().textTheme.copyWith(
-          headline1: textThemeLight.headline1,
-          headline2: textThemeLight.headline2,
-          overline: textThemeLight.headline3,
-          headline5: textThemeLight.headline5,
-          subtitle1: textThemeLight.subtitle1,
-          subtitle2: textThemeLight.subtitle2,
-          caption: textThemeLight.caption,
-        );
+        headline1: textThemeLight.headline1,
+        headline2: textThemeLight.headline2,
+        headline3: textThemeLight.headline3,
+        headline4: textThemeLight.headline4,
+        headline5: textThemeLight.headline5,
+        headline6: textThemeLight.headline6,
+        subtitle1: textThemeLight.subtitle1,
+        subtitle2: textThemeLight.subtitle2,
+        caption: textThemeLight.caption,
+        overline: textThemeLight.headline3,
+        bodyText1: textThemeLight.bodyText1);
   }
 
   ColorScheme get _appColorScheme {
@@ -77,7 +80,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         surface: Colors.blue, //xx
         background: Color(0xfff6f9fc), //xx
         error: Colors.red[900],
-        onPrimary: Colors.greenAccent,
+        onPrimary: colorSchemeLight.electric_violet,
         onSecondary: Colors.black, //x
         onSurface: Colors.white30,
         onBackground: Colors.black12,

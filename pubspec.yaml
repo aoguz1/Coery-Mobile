@@ -31,7 +31,7 @@ dependencies:
   dio: ^3.0.9
   easy_localization: ^2.3.2
   flutter_mobx: ^1.1.0
-  flutter_svg: any
+  flutter_svg: ^0.21.0+1
   json_annotation: ^3.0.1
   json_serializable: ^3.3.0
   kartal: ^1.1.0

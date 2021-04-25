@@ -151,10 +151,8 @@ class HomeView extends StatelessWidget {
                 children: [
                   Container(
                     padding: context.paddingNormal,
-                    child: Text(
-                      '📕 Kitap',
-                      style: context.textTheme.bodyText1,
-                    ),
+                    child: Text('📕 ' + 'Kitap',
+                        style: context.textTheme.bodyText1),
                   )
                 ],
               ),

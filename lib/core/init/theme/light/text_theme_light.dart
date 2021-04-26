@@ -16,7 +16,7 @@ class TextThemeLight {
   final TextStyle headline3 =
       TextStyle(fontSize: 48, fontWeight: FontWeight.w400);
   final TextStyle headline4 = TextStyle(
-    fontSize: 34,
+    fontSize: 26,
     fontWeight: FontWeight.w400,
     letterSpacing: 1.55,
   );
@@ -27,7 +27,7 @@ class TextThemeLight {
   final TextStyle subtitle1 =
       TextStyle(fontSize: 18, fontWeight: FontWeight.w700);
   final TextStyle subtitle2 =
-      TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w700);
   final TextStyle button = TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
   final TextStyle bodyText1 =
       TextStyle(fontSize: 14, fontWeight: FontWeight.w700);

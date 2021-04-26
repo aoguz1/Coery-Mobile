@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:fluttermvvmtemplate/core/constants/app/color_constants.dart';
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/view/detail/view/detail_view.dart';
 import 'package:fluttermvvmtemplate/view/home/viewmodel/home_view_model.dart';
 
 final HomeViewModel _viewModel = HomeViewModel();
@@ -16,7 +17,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailView(),
+            ),
+          );
+        },
         backgroundColor: context.colors.onPrimary,
         child: Icon(
           Icons.add,

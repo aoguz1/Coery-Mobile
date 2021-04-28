@@ -13,114 +13,134 @@ class DetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<DetailViewModel>(
-        viewModel: DetailViewModel(),
-        onModelReady: (model) {
-          model.setContext(context);
-          model.init();
-        },
-        onPageBuilder: (BuildContext context, DetailViewModel viewModel) =>
-            Scaffold(
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {},
-                backgroundColor: context.colors.onPrimary,
-                child: Icon(
-                  Icons.done,
-                  color: Colors.white,
-                  size: 30,
+      viewModel: DetailViewModel(),
+      onModelReady: (model) {
+        model.setContext(context);
+        model.init();
+      },
+      onPageBuilder: (BuildContext context, DetailViewModel viewModel) =>
+          Scaffold(
+        floatingActionButton: fabDoneButton(context),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Container(
+                padding: context.paddingMedium,
+                width: double.infinity,
+                color: context.colors.primary,
+                child: Column(
+                  children: [
+                    Expanded(flex: 2, child: SizedBox()),
+                    Expanded(
+                      flex: 3,
+                      child: enterEventText(context),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: subtitleText(context),
+                    )
+                  ],
                 ),
               ),
-              body: Column(
+            ),
+            Expanded(
+              flex: 6,
+              child: slideBody(viewModel),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container slideBody(DetailViewModel viewModel) {
+    return Container(
+      child: Column(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              child: Column(
                 children: [
                   Expanded(
-                    flex: 4,
-                    child: Container(
-                      padding: context.paddingMedium,
-                      width: double.infinity,
-                      color: context.colors.primary,
-                      child: Column(
-                        children: [
-                          Expanded(flex: 2, child: SizedBox()),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Etkinlik Gir ⚡️',
-                                style: context.textTheme.headline5,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Yaptığın aktiviteleri girerek kolayca takip et !',
-                                style: context.textTheme.subtitle1
-                                    .copyWith(color: Colors.white),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    flex: 1,
+                    child: SvgPicture.asset('asset/svg/polygon_down.svg'),
                   ),
+                  Expanded(flex: 4, child: pageSlider(viewModel)),
                   Expanded(
-                      flex: 6,
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 6,
-                              child: Container(
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: SvgPicture.asset(
-                                          'asset/svg/polygon_down.svg'),
-                                    ),
-                                    Expanded(
-                                        flex: 3,
-                                        child: Container(
-                                          child: PageView(
-                                            onPageChanged: (value) {
-                                              viewModel
-                                                  .changeInitialPage(value);
-                                            },
-                                            controller: viewModel.controller,
-                                            children: [
-                                              PageViewCard('💪', 'Spor'),
-                                              PageViewCard('💦', 'Su'),
-                                              PageViewCard('📕', 'Kitap'),
-                                              PageViewCard('⏰', 'Yapılacaklar'),
-                                            ],
-                                          ),
-                                        )),
-                                    Expanded(
-                                      flex: 1,
-                                      child: SvgPicture.asset(
-                                          'asset/svg/polygon_up.svg'),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Observer(builder: (_) {
-                                return viewModel.changePage();
-                              }),
-                            ),
-                            Spacer(
-                              flex: 6,
-                            )
-                          ],
-                        ),
-                      ))
+                    flex: 1,
+                    child: SvgPicture.asset('asset/svg/polygon_up.svg'),
+                  ),
                 ],
               ),
-            ));
+            ),
+          ),
+          Expanded(
+            flex: 6,
+            child: changeBody(viewModel),
+          ),
+          Spacer(
+            flex: 4,
+          )
+        ],
+      ),
+    );
+  }
+
+  FloatingActionButton fabDoneButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {},
+      backgroundColor: context.colors.onPrimary,
+      child: Icon(
+        Icons.done,
+        color: Colors.white,
+        size: 30,
+      ),
+    );
+  }
+
+  Container subtitleText(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      child: Text(
+        'Yaptığın aktiviteleri girerek kolayca takip et !',
+        style: context.textTheme.subtitle1.copyWith(color: Colors.white),
+      ),
+    );
+  }
+
+  Container enterEventText(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      child: Text(
+        'Etkinlik Gir ⚡️',
+        style: context.textTheme.headline5,
+      ),
+    );
+  }
+
+  Container pageSlider(DetailViewModel viewModel) {
+    return Container(
+      child: PageView(
+        onPageChanged: (value) {
+          viewModel.changeInitialPage(value);
+        },
+        controller: viewModel.controller,
+        children: [
+          PageViewCard('💪', 'Spor'),
+          PageViewCard('💦', 'Su'),
+          PageViewCard('📕', 'Kitap'),
+          PageViewCard('⏰', 'Yapılacaklar'),
+        ],
+      ),
+    );
+  }
+
+  Observer changeBody(DetailViewModel viewModel) {
+    return Observer(builder: (_) {
+      return viewModel.changePage();
+    });
   }
 }
 

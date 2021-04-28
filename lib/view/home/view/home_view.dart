@@ -1,8 +1,11 @@
 import 'dart:ui';
-
+import 'package:fl_chart/fl_chart.dart';
+import 'package:fluttermvvmtemplate/core/components/card/large_card_widget.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fluttermvvmtemplate/core/components/card/mini_card.dart';
 import 'package:fluttermvvmtemplate/core/constants/app/color_constants.dart';
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 import 'package:fluttermvvmtemplate/view/detail/view/detail_view.dart';
@@ -83,116 +86,185 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            top: context.mediaQuery.size.height * 0.310,
+          LargeCardWidget(
             left: context.mediaQuery.size.width * 0.06,
-            child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 0.01,
-                  blurRadius: 14,
-                  offset: Offset(0, 0.1), // changes position of shadow
+            top: context.mediaQuery.size.height * 0.310,
+            child: Expanded(
+              child: Padding(
+                padding: context.paddingLow,
+                child: SfRadialGauge(
+                  axes: <RadialAxis>[
+                    RadialAxis(
+                      minimum: 0,
+                      maximum: 100,
+                      showLabels: true,
+                      showTicks: false,
+                      startAngle: 270,
+                      endAngle: 270,
+                      useRangeColorForAxis: true,
+                      maximumLabels: 0,
+                      showLastLabel: false,
+                      labelOffset: context.mediaQuery.size.height * 0.06,
+                      labelFormat: '%23',
+                      axisLabelStyle:
+                          GaugeTextStyle(fontWeight: FontWeight.w600),
+                      axisLineStyle: AxisLineStyle(color: Color(0xFFF5F4F4)),
+                      pointers: <GaugePointer>[
+                        RangePointer(
+                          value: 43.5,
+                          width: 0.15,
+                          color: Colors.red,
+                          pointerOffset: 0.06,
+                          cornerStyle: CornerStyle.bothCurve,
+                          sizeUnit: GaugeSizeUnit.factor,
+                        )
+                      ],
+                    )
+                  ],
                 ),
-              ], color: Colors.white, borderRadius: BorderRadius.circular(22)),
-              width: context.mediaQuery.size.width * 0.42,
-              height: context.mediaQuery.size.height * 0.24,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: context.paddingNormal,
-                    child: Text(
-                      '⏰ Yapılacaklar',
-                      style: context.textTheme.bodyText1,
-                    ),
-                  )
-                ],
               ),
             ),
+            text: '⏰ Yapılacaklar',
           ),
-          Positioned(
+          LargeCardWidget(
             top: context.mediaQuery.size.height * 0.570,
             left: context.mediaQuery.size.width * 0.06,
-            child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 0.01,
-                  blurRadius: 14,
-                  offset: Offset(0, 0.1), // changes position of shadow
-                ),
-              ], color: Colors.white, borderRadius: BorderRadius.circular(22)),
-              width: context.mediaQuery.size.width * 0.42,
-              height: context.mediaQuery.size.height * 0.24,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: context.paddingNormal,
-                    child: Text(
-                      '💦 Su',
-                      style: context.textTheme.bodyText1,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            text: '💦 Su',
+            child: Expanded(
+                child: Padding(
+              padding: context.paddingLow,
+              child: Text('DENMEE'),
+            )),
           ),
-          Positioned(
+          MiniCardWidget(
             right: context.mediaQuery.size.height * 0.03,
             top: context.mediaQuery.size.height * 0.310,
-            child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 0.01,
-                  blurRadius: 14,
-                  offset: Offset(0, 0.1), // changes position of shadow
-                ),
-              ], color: Colors.white, borderRadius: BorderRadius.circular(22)),
-              width: context.mediaQuery.size.width * 0.42,
-              padding: EdgeInsets.all(0),
-              height: context.mediaQuery.size.height * 0.20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: context.paddingNormal,
-                    child: Text('📕 ' + 'Kitap',
-                        style: context.textTheme.bodyText1),
-                  )
-                ],
-              ),
+            text: '📕 Kitap',
+            child: Expanded(
+              child: Container(
+                  padding: context.paddingLow,
+                  child: BarChart(
+                    BarChartData(
+                      alignment: BarChartAlignment.spaceAround,
+                      maxY: 10,
+                      barTouchData: BarTouchData(
+                        enabled: false,
+                        touchTooltipData: BarTouchTooltipData(
+                          tooltipBgColor: Colors.transparent,
+                          tooltipPadding: const EdgeInsets.all(0),
+                          tooltipMargin: 8,
+                          getTooltipItem: (
+                            BarChartGroupData group,
+                            int groupIndex,
+                            BarChartRodData rod,
+                            int rodIndex,
+                          ) {
+                            return BarTooltipItem(
+                              rod.y.round().toString(),
+                              TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      titlesData: FlTitlesData(
+                        show: true,
+                        bottomTitles: SideTitles(
+                          showTitles: true,
+                          getTextStyles: (value) => const TextStyle(
+                              color: Color(0xff7589a2),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14),
+                          margin: 20,
+                          getTitles: (double value) {
+                            switch (value.toInt()) {
+                              case 0:
+                                return 'Mn';
+                              case 1:
+                                return 'Te';
+                              case 2:
+                                return 'Wd';
+                              case 3:
+                                return 'Tu';
+                              case 4:
+                                return 'Fr';
+                              case 5:
+                                return 'St';
+                              case 6:
+                                return 'Sn';
+                              default:
+                                return '';
+                            }
+                          },
+                        ),
+                        leftTitles: SideTitles(showTitles: false),
+                      ),
+                      borderData: FlBorderData(
+                        show: false,
+                      ),
+                      barGroups: [
+                        BarChartGroupData(
+                          x: 0,
+                          barRods: [
+                            BarChartRodData(
+                                y: 8, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                        BarChartGroupData(
+                          x: 1,
+                          barRods: [
+                            BarChartRodData(
+                                y: 10, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                        BarChartGroupData(
+                          x: 2,
+                          barRods: [
+                            BarChartRodData(
+                                y: 14, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                        BarChartGroupData(
+                          x: 3,
+                          barRods: [
+                            BarChartRodData(
+                                y: 15, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                        BarChartGroupData(
+                          x: 3,
+                          barRods: [
+                            BarChartRodData(
+                                y: 13, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                        BarChartGroupData(
+                          x: 3,
+                          barRods: [
+                            BarChartRodData(
+                                y: 10, colors: [context.colors.primary])
+                          ],
+                          showingTooltipIndicators: [0],
+                        ),
+                      ],
+                    ),
+                  )),
             ),
           ),
-          Positioned(
+          MiniCardWidget(
             right: context.mediaQuery.size.height * 0.03,
             top: context.mediaQuery.size.height * 0.53,
-            child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 0.01,
-                  blurRadius: 14,
-                  offset: Offset(0, 0.1), // changes position of shadow
-                ),
-              ], color: Colors.white, borderRadius: BorderRadius.circular(22)),
-              width: context.mediaQuery.size.width * 0.42,
-              height: context.mediaQuery.size.height * 0.20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: context.paddingNormal,
-                    child: Text(
-                      '💪 Spor',
-                      style: context.textTheme.bodyText1,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            text: '💪 Spor',
+            child: Expanded(
+                child: Container(
+                    padding: context.paddingLow, child: Text('denemee'))),
           ),
           DraggableScrollableSheet(
               initialChildSize: 0.165,
@@ -208,22 +280,28 @@ class HomeView extends StatelessWidget {
                           title: Text('index $index'),
                         );
                       }),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.4),
-                          spreadRadius: 0.01,
-                          blurRadius: 14,
-                          offset: Offset(0, 0.1), // changes position of shadow
-                        ),
-                      ],
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          topRight: Radius.circular(25))),
+                  decoration: scroolViewRadiusEffect(),
                 );
-              })
+              }),
         ],
+      ),
+    );
+  }
+
+  BoxDecoration scroolViewRadiusEffect() {
+    return BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.4),
+          spreadRadius: 0.01,
+          blurRadius: 14,
+          offset: Offset(0, 0.1), // changes position of shadow
+        ),
+      ],
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(25),
+        topRight: Radius.circular(25),
       ),
     );
   }

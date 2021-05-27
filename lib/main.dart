@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/view/detail/view/deneme.dart';
 import 'package:fluttermvvmtemplate/view/detail/view/detail_view.dart';
 import 'package:fluttermvvmtemplate/view/home/view/home_view.dart';
+import 'package:fluttermvvmtemplate/view/onboarding/view/onborarding_view.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -13,9 +13,10 @@ import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleManager.prefrencesInit();
+  await LocaleManager.prefrencesInit();
+  await EasyLocalization.ensureInitialized();
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
@@ -31,7 +32,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: HomeView(),
+      home: OnBoardingView(),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

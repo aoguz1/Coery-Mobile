@@ -1,53 +1,35 @@
 {
-    "welcome": "Welcome to My App",
-    "onBoard":{
-        "page1":
-        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"},
-        "page2":
-        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"},
-        "page3":
-        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"}
+    "onBoard": {
+      "page1": {
+        "headtitle": "⏰ Yapılacaklar",
+        "title": "Çalışma Performansını Takip Et",
+        "desc": "Günlük yapacağın şeyleri uygulamaya kaydet ve verimliliğini gözlemle"
+      },
+      "page2": {
+        "headtitle": "💪 Spor",
+        "title": "Spor Aktivitelerini Gözlemle",
+        "desc": "Haftalık olarak spor aktivitelerini uygulamaya gir ve haftalık gelişimini gözlemle"
+      },
+      "page3": {
+        "headtitle": "📕 Kitap",
+        "title": "Kitap Okumanı Takip Et",
+        "desc": "Haftalık olarak kitap okuma  aktivitelerini uygulamaya gir ve haftalık okuma grafiğini incele"
+      },
+      "page4": {
+        "headtitle": "💦 Su",
+        "title": "Günlük Su İçme Aktiviteni Gözlemle",
+        "desc": "Günlük olarak su içme aktivitelerini uygulamaya gir. Günlük ve haftalık olarak su içme grafiğini incele"
+      }
     },
-
-    "login":{
-        "tab1":"Login",
-        "tab2":"SignUp",
-        "email":"Email",
-        "password":"Password",
-        "forgotText":"Forgot Password",
-        "login":"Login",
-        "dontAccount":"Dont have account"
+    "register":{
+      "headtitle": "Kayıt Ol",
+      "desc": "Tüm aktivitelerini takip edebileceğin ve haftalık olarak gelişiminii takip edebileceğin  Coery için hemen kayıt ol !",
+      "register": "Register"
     },
-    "home":{
-        "build":{
-            "tabbar":{
-                "tab1":"Latest",
-                "tab2":"Decorative",
-                "tab3":"Music",
-                "tab4":"Style"
-            },
-            "subTitle":"Recommended"
-        },
-        "social":{
-            "cancel":"Cancel",
-            "next":"Next",
-            "search":"Search",
-            "findFriends":"Find Friends",
-            "follow":"Follow",
-            "following":"Following"
-        },
-        "game":{
-            "title":"Unity Game",
-            "newUpdate":"New Updated Games",
-            "viewAll":"View All",
-            "topDownload":"Top Downloads",
-            "tabbar":{
-                "tab1":"RACING",
-                "tab2":"SIMULATION",
-                "tab3":"CASUAL",
-                "tab4":"CARTOONY",
-                "tab5":"TOYS"
-            }
-        }
-    }
-}
+    "signIn":{
+      "headtitle": "Giriş Yap",
+      "desc" : "Hemen kullanıcı adı ve şifreni girerek aktivitelerini takip et!",
+      "or": "ya da",
+      "signIn": "Sign In"
+    }  
+  }

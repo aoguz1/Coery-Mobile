@@ -1,0 +1,35 @@
+{
+  "onBoard": {
+    "page1": {
+      "headtitle": "⏰ Yapılacaklar",
+      "title": "Çalışma Performansını Takip Et",
+      "desc": "Günlük yapacağın şeyleri uygulamaya kaydet ve verimliliğini gözlemle"
+    },
+    "page2": {
+      "headtitle": "💪 Spor",
+      "title": "Spor Aktivitelerini Gözlemle",
+      "desc": "Haftalık olarak spor aktivitelerini uygulamaya gir ve haftalık gelişimini gözlemle"
+    },
+    "page3": {
+      "headtitle": "📕 Kitap",
+      "title": "Kitap Okumanı Takip Et",
+      "desc": "Haftalık olarak kitap okuma  aktivitelerini uygulamaya gir ve haftalık okuma grafiğini incele"
+    },
+    "page4": {
+      "headtitle": "💦 Su",
+      "title": "Günlük Su İçme Aktiviteni Gözlemle",
+      "desc": "Günlük olarak su içme aktivitelerini uygulamaya gir. Günlük ve haftalık olarak su içme grafiğini incele"
+    }
+  },
+  "register":{
+    "headtitle": "Kayıt Ol",
+    "desc": "Tüm aktivitelerini takip edebileceğin ve haftalık olarak gelişiminii takip edebileceğin  Coery için hemen kayıt ol !",
+    "register": "Register"
+  },
+  "signIn":{
+    "headtitle": "Giriş Yap",
+    "desc" : "Hemen kullanıcı adı ve şifreni girerek aktivitelerini takip et!",
+    "or": "ya da",
+    "signIn": "Sign In"
+  }  
+}

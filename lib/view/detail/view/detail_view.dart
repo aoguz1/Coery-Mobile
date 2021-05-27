@@ -23,33 +23,25 @@ class DetailView extends StatelessWidget {
         floatingActionButton: fabDoneButton(context),
         body: Column(
           children: [
-            Expanded(
-              flex: 4,
-              child: Container(
-                padding: context.paddingMedium,
-                width: double.infinity,
-                color: context.colors.primary,
-                child: Column(
-                  children: [
-                    Expanded(flex: 2, child: SizedBox()),
-                    Expanded(
-                      flex: 3,
-                      child: enterEventText(context),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: subtitleText(context),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 6,
-              child: slideBody(viewModel),
-            )
+            Expanded(flex: 4, child: detailTopArea(context)),
+            Expanded(flex: 6, child: slideBody(viewModel))
           ],
         ),
+      ),
+    );
+  }
+
+  Container detailTopArea(BuildContext context) {
+    return Container(
+      padding: context.paddingMedium,
+      width: double.infinity,
+      color: context.colors.primary,
+      child: Column(
+        children: [
+          Expanded(flex: 2, child: SizedBox()),
+          Expanded(flex: 3, child: enterEventText(context)),
+          Expanded(flex: 3, child: subtitleText(context))
+        ],
       ),
     );
   }
@@ -105,7 +97,7 @@ class DetailView extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Text(
         'Yaptığın aktiviteleri girerek kolayca takip et !',
-        style: context.textTheme.subtitle1.copyWith(color: Colors.white),
+        style: context.textTheme.subtitle1!.copyWith(color: Colors.white),
       ),
     );
   }
@@ -146,7 +138,7 @@ class DetailView extends StatelessWidget {
 
 class BookDetailWidget extends StatelessWidget {
   BookDetailWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
   final viewModel = DetailViewModel();
   @override
@@ -154,8 +146,12 @@ class BookDetailWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          TextInputWidget('Kitap Adı', viewModel.book_name_text_controller),
-          TextInputWidget('Okunan Sayfa', viewModel.book_name_text_controller)
+          TextInputWidget(
+              labelName: 'Kitap Adı',
+              controller: viewModel.book_name_text_controller),
+          TextInputWidget(
+              labelName: 'Okunan Sayfa',
+              controller: viewModel.book_name_text_controller)
         ],
       ),
     );
@@ -164,7 +160,7 @@ class BookDetailWidget extends StatelessWidget {
 
 class SportDetailWidget extends StatelessWidget {
   SportDetailWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
   final viewModel = DetailViewModel();
   @override
@@ -172,8 +168,12 @@ class SportDetailWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          TextInputWidget('Aktivite Adı', viewModel.book_name_text_controller),
-          TextInputWidget('Süre', viewModel.book_name_text_controller)
+          TextInputWidget(
+              labelName: 'Aktivite Adı',
+              controller: viewModel.book_name_text_controller),
+          TextInputWidget(
+              labelName: 'Süre',
+              controller: viewModel.book_name_text_controller)
         ],
       ),
     );
@@ -182,7 +182,7 @@ class SportDetailWidget extends StatelessWidget {
 
 class TodoDetailWidget extends StatelessWidget {
   TodoDetailWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
   final viewModel = DetailViewModel();
   @override
@@ -194,7 +194,8 @@ class TodoDetailWidget extends StatelessWidget {
           Expanded(
               flex: 2,
               child: TextInputWidget(
-                  'Aktivite Adı', viewModel.book_name_text_controller)),
+                  labelName: 'Aktivite Adı',
+                  controller: viewModel.book_name_text_controller)),
           Expanded(
             flex: 2,
             child: Padding(
@@ -216,7 +217,7 @@ class TodoDetailWidget extends StatelessWidget {
 
 class WaterDetailWidget extends StatelessWidget {
   WaterDetailWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
   final viewModel = DetailViewModel();
   @override
@@ -239,7 +240,7 @@ class WaterDetailWidget extends StatelessWidget {
                       style: context.textTheme.subtitle2),
                   TextSpan(
                     text: ' 1.4',
-                    style: context.textTheme.subtitle2
+                    style: context.textTheme.subtitle2!
                         .copyWith(color: context.colors.primary),
                   ),
                   TextSpan(
@@ -257,9 +258,19 @@ class WaterDetailWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  WaterButton(glass_svg, '200 ml', () {}),
-                  WaterButton(mini_bottle_svg, '500 ml', () {}),
-                  WaterButton(big_bottle_svg, '1 lt', () {})
+                  WaterButton(
+                    assetPath: glass_svg,
+                    waterSize: '200 ml',
+                    onPress: () {},
+                  ),
+                  WaterButton(
+                      assetPath: mini_bottle_svg,
+                      waterSize: '500 ml',
+                      onPress: () {}),
+                  WaterButton(
+                      assetPath: big_bottle_svg,
+                      waterSize: '1 lt',
+                      onPress: () {})
                 ],
               ),
             ),

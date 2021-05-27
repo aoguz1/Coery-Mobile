@@ -29,7 +29,7 @@ class PageViewCard extends StatelessWidget {
           Text(emoji, style: context.textTheme.headline6),
           Text(
             cardText,
-            style: context.textTheme.subtitle2
+            style: context.textTheme.subtitle2!
                 .copyWith(fontWeight: FontWeight.w600),
           )
         ],

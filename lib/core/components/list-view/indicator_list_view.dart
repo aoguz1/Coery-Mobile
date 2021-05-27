@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../../extension/context_extension.dart';
 
 class IndactorListView extends StatelessWidget {
-  final int itemCount;
+  final int? itemCount;
 
-  final int currentIndex;
+  final int? currentIndex;
 
-  final Widget Function(int index) onListItem;
+  final Widget Function(int index)? onListItem;
 
-  const IndactorListView({Key key, this.itemCount, this.onListItem, this.currentIndex}) : super(key: key);
+  const IndactorListView(
+      {Key? key, this.itemCount, this.onListItem, this.currentIndex})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -30,11 +32,12 @@ class IndactorListView extends StatelessWidget {
   CircleAvatar buildCircleAvatar(int index, BuildContext context) {
     return CircleAvatar(
       backgroundColor: isCurrentIndex(index) ? Colors.black12 : Colors.blue,
-      radius: isCurrentIndex(index) ? context.width * 0.03 : context.width * 0.015,
+      radius:
+          isCurrentIndex(index) ? context.width * 0.03 : context.width * 0.015,
       child: AnimatedOpacity(
         opacity: opacityValue(index),
         duration: context.normalDuration,
-        child: onListItem(index),
+        child: onListItem!(index),
       ),
     );
   }

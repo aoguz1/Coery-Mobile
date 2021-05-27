@@ -17,7 +17,7 @@ class TestsView extends StatefulWidget {
 }
 
 class _TestsViewState extends BaseState<TestsView> {
-  TestViewModel viewModel;
+  late TestViewModel viewModel;
   @override
   Widget build(BuildContext context) {
     return BaseView<TestViewModel>(
@@ -49,7 +49,7 @@ class _TestsViewState extends BaseState<TestsView> {
     return IconButton(
         icon: Icon(Icons.change_history),
         onPressed: () {
-          context.locale = LanguageManager.instance.enLocale;
+          context.setLocale(LanguageManager.instance.enLocale);
         });
   }
 
@@ -65,7 +65,7 @@ class _TestsViewState extends BaseState<TestsView> {
     );
   }
 
-  Text textWelcomeWidget() => Text(LocaleKeys.welcome.locale);
+  Text textWelcomeWidget() => Text(LocaleKeys.onBoard_page1_desc);
 
   FloatingActionButton get floatingActionButtonNumberIncrement {
     return FloatingActionButton(
@@ -76,6 +76,6 @@ class _TestsViewState extends BaseState<TestsView> {
 
 extension _FormArea on _TestsViewState {
   TextFormField get mailField => TextFormField(
-        validator: (value) => value.isValidEmail,
+        validator: (value) => value!.isValidEmail,
       );
 }

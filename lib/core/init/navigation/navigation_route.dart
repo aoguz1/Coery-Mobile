@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttermvvmtemplate/view/home/view/home_view.dart';
 import 'package:fluttermvvmtemplate/view/test/view/test_view.dart';
 import '../../components/card/not_found_navigation_widget.dart';
 import '../../constants/navigation/navigation_constants.dart';

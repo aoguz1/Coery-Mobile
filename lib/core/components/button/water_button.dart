@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 
 class WaterButton extends StatelessWidget {
-  Function onPress;
-  String assetPath;
-  String waterSize;
+  final VoidCallback? onPress;
+  final String assetPath;
+  final String waterSize;
+  const WaterButton({
+    Key? key,
+    required this.onPress,
+    required this.assetPath,
+    required this.waterSize,
+  }) : super(key: key);
 
-  WaterButton(@required this.assetPath, @required this.waterSize,
-      @required this.onPress);
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

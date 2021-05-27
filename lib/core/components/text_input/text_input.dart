@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 
 class TextInputWidget extends StatelessWidget {
-  String labelName;
-  var controller = TextEditingController();
-  var formKey = GlobalKey<FormState>();
-  Function valid;
+  final String? labelName;
+  final TextEditingController? controller;
 
-  TextInputWidget(this.labelName, this.controller);
+  TextInputWidget({
+    Key? key,
+    this.labelName,
+    this.controller,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +28,7 @@ class TextInputWidget extends StatelessWidget {
             focusColor: context.colors.background,
             focusedBorder: UnderlineInputBorder(),
             labelText: labelName,
-            labelStyle: context.textTheme.bodyText1
+            labelStyle: context.textTheme.bodyText1!
                 .copyWith(fontSize: 15, fontWeight: FontWeight.w500)),
       ),
     );

@@ -24,8 +24,64 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$selectedCardAtom = Atom(name: '_HomeViewModelBase.selectedCard');
+
+  @override
+  int get selectedCard {
+    _$selectedCardAtom.reportRead();
+    return super.selectedCard;
+  }
+
+  @override
+  set selectedCard(int value) {
+    _$selectedCardAtom.reportWrite(value, super.selectedCard, () {
+      super.selectedCard = value;
+    });
+  }
+
+  final _$touchedValueAtom = Atom(name: '_HomeViewModelBase.touchedValue');
+
+  @override
+  double? get touchedValue {
+    _$touchedValueAtom.reportRead();
+    return super.touchedValue;
+  }
+
+  @override
+  set touchedValue(double? value) {
+    _$touchedValueAtom.reportWrite(value, super.touchedValue, () {
+      super.touchedValue = value;
+    });
+  }
+
+  final _$sayiAtom = Atom(name: '_HomeViewModelBase.sayi');
+
+  @override
+  int get sayi {
+    _$sayiAtom.reportRead();
+    return super.sayi;
+  }
+
+  @override
+  set sayi(int value) {
+    _$sayiAtom.reportWrite(value, super.sayi, () {
+      super.sayi = value;
+    });
+  }
+
   final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase');
+
+  @override
+  void increment() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.increment');
+    try {
+      return super.increment();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   String getDate() {
@@ -41,7 +97,10 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   @override
   String toString() {
     return '''
-date: ${date}
+date: ${date},
+selectedCard: ${selectedCard},
+touchedValue: ${touchedValue},
+sayi: ${sayi}
     ''';
   }
 }

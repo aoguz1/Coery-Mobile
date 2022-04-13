@@ -17,13 +17,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.prefrencesInit();
   await EasyLocalization.ensureInitialized();
-  runApp(MultiProvider(
-    providers: [...ApplicationProvider.instance.dependItems],
-    child: EasyLocalization(
-        child: MyApp(),
-        supportedLocales: LanguageManager.instance.supportedLocales,
-        path: ApplicationConstants.LANG_ASSET_PATH),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [...ApplicationProvider.instance.dependItems],
+      child: EasyLocalization(
+          child: MyApp(),
+          supportedLocales: LanguageManager.instance.supportedLocales,
+          path: ApplicationConstants.LANG_ASSET_PATH),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
